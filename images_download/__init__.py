@@ -88,6 +88,10 @@ def download_images(config, folder, links):
             except Exception as e:
                 print(str(e))
 
+        old_set_name = set_name
+
+    notif.last_set(config, old_set_name)
+
 
 def find_litter():
     i = 0
