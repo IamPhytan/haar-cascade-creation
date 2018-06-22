@@ -10,6 +10,7 @@ import urllib.request
 import cv2
 import numpy as np
 import os
+import notification as notif
 
 FOLDERS = ['neg', 'pos']
 
@@ -25,7 +26,7 @@ def get_download_links(config):
     print(wnid_links)
 
     # 2. Get requests from config file
-    requests = [config['NEGATIVES'], config['POSITIVES']]
+    requests = [config['REQUEST']['NEGATIVES'], config['REQUEST']['POSITIVES']]
     for delim in ',;.':
         requests = [req.replace(delim, '') for req in requests]
     splitted_request = [req.lower().split(' ') for req in requests]
@@ -43,16 +44,17 @@ def get_download_links(config):
     return download_links
 
 
-def neg_or_pos(download_links):
+def neg_or_pos(config, download_links):
     assert (isinstance(download_links, dict)), "Dictionary expected before downloading images"
     for folder_type, request_links in download_links.items():
         if bool(download_links[folder_type]):
-            download_images(folder_type, request_links)
+            download_images(config, folder_type, request_links)
         elif not os.path.exists(os.path.join(os.getcwd(), folder_type)):
             os.makedirs(os.path.join(os.getcwd(), folder_type))
 
 
-def download_images(folder, links):
+def download_images(config, folder, links):
+    old_set_name = str()
 
     if folder == FOLDERS[0]:
         sz = 100
@@ -65,6 +67,9 @@ def download_images(folder, links):
 
     for set_name, images_link in links.items():
         print("Downloading images from", images_link)
+
+        if bool(old_set_name):
+            notif.set_completed(config, set_name, old_set_name)
 
         images_urls = urllib.request.urlopen(images_link).read().decode().split('\n')
 
@@ -83,8 +88,12 @@ def download_images(folder, links):
             except Exception as e:
                 print(str(e))
 
+        old_set_name = set_name
 
-def find_litter():
+    notif.last_set(config, old_set_name)
+
+
+def find_litter(config):
     i = 0
     for file_type in FOLDERS:
         for img in os.listdir(file_type):
@@ -102,8 +111,10 @@ def find_litter():
                 except Exception as e:
                     print(str(e))
 
+    notif.litter_deleted(config, i)
 
-def create_files():
+
+def create_files(config):
     for file_type in FOLDERS:
         for img in os.listdir(file_type):
             if file_type == 'neg':
@@ -115,3 +126,5 @@ def create_files():
                 line = file_type + '/' + img + ' 1 0 0 50 50\n'
                 with open('info.dat', 'a') as f:
                     f.write(line)
+
+    notif.created_files(config)

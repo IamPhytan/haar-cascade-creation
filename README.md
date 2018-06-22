@@ -21,9 +21,12 @@ The following steps explain how to configure the script before running it:
 2. Download the requirements (or create a `virtualenv` before) : `pip3 install -r requirements.txt`
 3. In [wnids-image-net.txt](wnids-image-net.txt), choose the WordNet Ids that will be used in your request
  to ImageNet. Insert them with appropriate keywords in [wnids-request.txt](wnids-request.txt).
-4. Add your requests to the [configuration_file](config.json). The keywords that are used in the request are 
+4. Create an e-mail address that will be used to send emails notifications through Python
+5. Edit the [configuration file](config.json) with your e-mail info and the email that will send notifications. 
+Informations about SMTP E-mail servers can be found [here][email-servers]
+6. Add your requests to the [configuration_file](config.json). The keywords that are used in the request are 
 those that have been inserted in [wnids-request.txt](wnids-request.txt)
-5. Run script: `python3 main.py`
+7. Run script: `python3 main.py`
 
 ## License
 [MIT](https://opensource.org/licenses/MIT)
