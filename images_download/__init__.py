@@ -25,7 +25,7 @@ def get_download_links(config):
     print(wnid_links)
 
     # 2. Get requests from config file
-    requests = [config['NEGATIVES'], config['POSITIVES']]
+    requests = [config['REQUEST']['NEGATIVES'], config['REQUEST']['POSITIVES']]
     for delim in ',;.':
         requests = [req.replace(delim, '') for req in requests]
     splitted_request = [req.lower().split(' ') for req in requests]

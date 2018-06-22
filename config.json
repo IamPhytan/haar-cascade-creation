@@ -1,4 +1,14 @@
 {
-  "POSITIVES": "",
-  "NEGATIVES": "Sports and people, city"
+  "REQUEST": {
+    "POSITIVES": "",
+    "NEGATIVES": "Sports and people, city"
+  },
+  "EMAIL": {
+    "WITH_EMAIL_NOTIFICATIONS": true or false,
+    "EMAIL_RECIPIENTS_TO": ["<recipient-email>"],
+    "EMAIL_RECIPIENTS_CC": [""],
+    "EMAIL_LOGIN": "<sender-login>",
+    "EMAIL_PASSWORD": "<sender-password>",
+    "EMAIL_SERVER": "<sender-server>"
+  }
 }
