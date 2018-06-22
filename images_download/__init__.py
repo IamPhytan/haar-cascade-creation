@@ -6,9 +6,14 @@
 # License: MIT
 # Path: -/images_download
 
+import urllib.request
+import cv2
+import os
+
 FOLDERS = ['neg', 'pos']
 
-def get_download_filed(config):
+
+def get_download_links(config):
     # 1. Get links from wnids-request.txt
     with open('wnids-request.txt', 'r') as links_file:
         wnids = links_file.read().split('\n')
@@ -35,3 +40,44 @@ def get_download_filed(config):
     download_links = dict(zip(FOLDERS, splitted_request))
 
     return download_links
+
+
+def neg_or_pos(download_links):
+    assert (isinstance(download_links, dict)), "Dictionary expected before downloading images"
+    for folder_type, request_links in download_links.items():
+        if bool(download_links[folder_type]):
+            download_images(folder_type, request_links)
+        elif not os.path.exists(os.path.join(os.getcwd(), folder_type)):
+            os.makedirs(os.path.join(os.getcwd(), folder_type))
+
+
+def download_images(folder, links):
+
+    if folder == FOLDERS[0]:
+        sz = 100
+    else:
+        sz = 50
+    download_folder = os.path.join(os.getcwd(), folder)
+
+    if not os.path.exists(download_folder):
+        os.makedirs(download_folder)
+
+    for set_name, images_link in links.items():
+        print("Downloading images from", images_link)
+
+        images_urls = urllib.request.urlopen(images_link).read().decode().split('\n')
+
+        for idx, url in enumerate(images_urls):
+            file_numb = len(
+                [filename for filename in os.listdir(download_folder) if os.path.isfile(os.path.join(
+                    download_folder, filename))])
+            try:
+                print(str(round(100 * idx / len(images_urls), 4)), '%', url)
+                img_path = os.path.join(download_folder, str(file_numb).zfill(4) + '.jpg')
+                urllib.request.urlretrieve(url, img_path)
+                img = cv2.imread(img_path, cv2.IMREAD_GRAYSCALE)
+                if img is not None:
+                    resized_image = cv2.resize(img, (sz, sz))
+                    cv2.imwrite(img_path, resized_image)
+            except Exception as e:
+                print(str(e))

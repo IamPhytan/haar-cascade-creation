@@ -19,4 +19,6 @@ if __name__ == '__main__':
     with open('config.json', 'r') as f:
         config = json.load(f)
 
-    download_links = images_download.get_download_filed(config)
+    download_links = images_download.get_download_links(config)
+    print(download_links)
+    images_download.neg_or_pos(download_links)
