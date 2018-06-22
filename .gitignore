@@ -102,3 +102,7 @@ ENV/
 
 # checkpoint
 checkpoint
+
+# Folders
+neg/
+pos/
