@@ -34,3 +34,8 @@ def send_email(config, subject, body):
         server.sendmail(fromaddr, recipients, msg.as_string())
         server.quit()
 
+
+def set_completed(config, new_set_name, old_set_name):
+    email_subject = '[OpenCV] The following set: {} is now fully downloaded.'.format(old_set_name)
+    email_message = "Now downloading pictures of {}".format(new_set_name)
+    send_email(config, subject=email_subject, body=email_message)
