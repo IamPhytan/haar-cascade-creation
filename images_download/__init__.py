@@ -114,7 +114,7 @@ def find_litter(config):
     notif.litter_deleted(config, i)
 
 
-def create_files():
+def create_files(config):
     for file_type in FOLDERS:
         for img in os.listdir(file_type):
             if file_type == 'neg':
@@ -126,3 +126,5 @@ def create_files():
                 line = file_type + '/' + img + ' 1 0 0 50 50\n'
                 with open('info.dat', 'a') as f:
                     f.write(line)
+
+    notif.created_files(config)

@@ -51,3 +51,9 @@ def litter_deleted(config, num):
     email_subject = "[OpenCV] Uglies found !"
     email_message = "{} non-interesting images were found\nNow working on bg.txt and info.lst".format(num)
     send_email(config, subject=email_subject, body=email_message)
+
+
+def created_files(config):
+    email_subject = "[OpenCV] Preparation complete !"
+    email_message = "Please come to the computer to start training the classifier"
+    send_email(config, subject=email_subject, body=email_message)
