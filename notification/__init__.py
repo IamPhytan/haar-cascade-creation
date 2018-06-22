@@ -45,3 +45,9 @@ def last_set(config, last_set_name):
     email_subject = '[OpenCV] The following set: {} is now fully downloaded.'.format(last_set_name)
     email_message = "Preparing to clean the database from 'litter'\nPlease wait a little..."
     send_email(config, subject=email_subject, body=email_message)
+
+
+def litter_deleted(config, num):
+    email_subject = "[OpenCV] Uglies found !"
+    email_message = "{} non-interesting images were found\nNow working on bg.txt and info.lst".format(num)
+    send_email(config, subject=email_subject, body=email_message)

@@ -93,7 +93,7 @@ def download_images(config, folder, links):
     notif.last_set(config, old_set_name)
 
 
-def find_litter():
+def find_litter(config):
     i = 0
     for file_type in FOLDERS:
         for img in os.listdir(file_type):
@@ -110,6 +110,8 @@ def find_litter():
 
                 except Exception as e:
                     print(str(e))
+
+    notif.litter_deleted(config, i)
 
 
 def create_files():
