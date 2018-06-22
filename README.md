@@ -1,6 +1,11 @@
 # Haar Cascade Creation
 Creation of custom Haar Cascade Classifiers
 
+![GitHub release](https://img.shields.io/github/tag/iamphytan/haar-cascade-creation.svg?label=version&style=flat-square)
+![GitHub Issues](https://img.shields.io/github/issues/iamphytan/haar-cascade-creation.svg?style=flat-square)
+![Downloads](https://img.shields.io/github/downloads/iamphytan/haar-cascade-creation/total.svg?style=flat-square)
+![License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)
+
 ## Motivation
 This script downloads the data and creates the files needed for 
 the training of your own Haar Cascade Classifiers with OpenCV. 
