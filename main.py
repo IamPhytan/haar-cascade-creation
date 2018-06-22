@@ -23,3 +23,4 @@ if __name__ == '__main__':
     print(download_links)
     images_download.neg_or_pos(download_links)
     images_download.find_litter()
+    images_download.create_files()
