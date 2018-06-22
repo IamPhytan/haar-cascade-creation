@@ -81,3 +81,22 @@ def download_images(folder, links):
                     cv2.imwrite(img_path, resized_image)
             except Exception as e:
                 print(str(e))
+
+
+def find_litter():
+    i = 0
+    for file_type in FOLDERS:
+        for img in os.listdir(file_type):
+            for litter in os.listdir('litter'):
+                try:
+                    current_image_path = os.path.join(os.getcwd(), file_type, str(img))
+                    litter = cv2.imread(os.path.join(os.getcwd(), 'litter', str(litter)))
+                    question = cv2.imread(current_image_path)
+
+                    if litter.shape == question.shape and not (np.bitwise_xor(litter, question).any()):
+                        i += 1
+                        print('Rubbish picture found at', current_image_path)
+                        os.remove(current_image_path)
+
+                except Exception as e:
+                    print(str(e))

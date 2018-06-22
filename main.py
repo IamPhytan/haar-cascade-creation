@@ -22,3 +22,4 @@ if __name__ == '__main__':
     download_links = images_download.get_download_links(config)
     print(download_links)
     images_download.neg_or_pos(download_links)
+    images_download.find_litter()
