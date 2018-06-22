@@ -29,4 +29,3 @@ those that have been inserted in [wnids-request.txt](wnids-request.txt)
 [MIT](https://opensource.org/licenses/MIT)
 
 [PythonProgramming]: https://pythonprogramming.net/haar-cascade-object-detection-python-opencv-tutorial/
-[email-servers]: https://www.werockyourweb.com/list-outgoing-smtp-mail-servers/
