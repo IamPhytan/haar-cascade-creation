@@ -13,6 +13,8 @@ the training of your own Haar Cascade Classifiers with OpenCV.
 This script is **made for Python3** and is based on a
  [tutorial][PythonProgramming] made by
  [@Sentdex](https://github.com/Sentdex).
+ 
+ Please refer to [version 1.0.0] for a **version without email notification**.
 
 ## Installation
 The following steps explain how to configure the script before running it:
@@ -32,3 +34,5 @@ those that have been inserted in [wnids-request.txt](wnids-request.txt)
 [MIT](https://opensource.org/licenses/MIT)
 
 [PythonProgramming]: https://pythonprogramming.net/haar-cascade-object-detection-python-opencv-tutorial/
+[version 1.0.0]: https://github.com/IamPhytan/haar-cascade-creation/tree/v1.0.0
+[email-servers]: https://www.werockyourweb.com/list-outgoing-smtp-mail-servers/
