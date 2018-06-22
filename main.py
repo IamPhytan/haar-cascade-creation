@@ -8,8 +8,15 @@
 # License: MIT
 # Path: -
 
+import json
 import sys
+import images_download
 
 if __name__ == '__main__':
 
     assert (sys.version_info[0] >= 3), "Python 3 or a more recent version is required."
+
+    with open('config.json', 'r') as f:
+        config = json.load(f)
+
+    download_links = images_download.get_download_filed(config)
