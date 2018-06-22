@@ -1,5 +1,5 @@
 # Haar Cascade Creation
-Creation of custom Haar Cascade Classifiers
+> Creation of custom Haar Cascade Classifiers
 
 ![GitHub release](https://img.shields.io/github/tag/iamphytan/haar-cascade-creation.svg?label=version&style=flat-square)
 ![GitHub Issues](https://img.shields.io/github/issues/iamphytan/haar-cascade-creation.svg?style=flat-square)
