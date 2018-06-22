@@ -55,5 +55,5 @@ def litter_deleted(config, num):
 
 def created_files(config):
     email_subject = "[OpenCV] Preparation complete !"
-    email_message = "Please come to the computer to start training the classifier"
+    email_message = "Please go to your computer to start training the classifier"
     send_email(config, subject=email_subject, body=email_message)
